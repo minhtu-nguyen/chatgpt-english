@@ -39,7 +39,7 @@ async def reset_conversation():
     reset_messages()
     return {"response": "conversation reset"}
 
-@app.get("/test-audio")
+@app.get("/get-audio")
 async def get_audio():
     audio_input = open("voice.mp3", "rb")
 
@@ -50,6 +50,7 @@ async def get_audio():
     
     chat_response = get_chat_response(message_decoded)
     store_messages(message_decoded, chat_response)
+    #print(chat_response)
     
     # Convert chat response to audio
     audio_output = convert_text_to_speech(chat_response)
