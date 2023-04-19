@@ -1,10 +1,10 @@
+import Controller from "./components/Controller"
 
 function App() {
 
-
   return (
-    <div className="">   
-      <div className='text-2xl'>Hello</div>   
+    <div className=""> 
+      <Controller />   
     </div>
   )
 }
