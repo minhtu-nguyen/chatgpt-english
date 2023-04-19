@@ -13,13 +13,16 @@ from functions.openai_requests import convert_audio_to_text, get_chat_response
 from functions.database import store_messages, reset_messages
 from functions.text_to_speech import convert_text_to_speech
 
-
-#CORS
-origins = [
+'''
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:4173",
     "http://localhost:3000",
+'''
+
+#CORS
+origins = [
+    "https://superlative-gnome-f096d1.netlify.app/"
 ]
 
 app.add_middleware(
