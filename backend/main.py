@@ -1,8 +1,9 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
-from decouple import config
+#from decouple import config
 import openai
+import uvicorn
 
 #App Initialization
 app = FastAPI()
@@ -22,7 +23,8 @@ from functions.text_to_speech import convert_text_to_speech
 
 #CORS
 origins = [
-    "https://superlative-gnome-f096d1.netlify.app/"
+    "https://superlative-gnome-f096d1.netlify.app/",
+    "http://chat-demo.minhtu-nguyen.dev/"
 ]
 
 app.add_middleware(
@@ -108,3 +110,6 @@ async def post_audio(file: UploadFile = File(...)):
 
     # Use for Post: Return output audio
     return StreamingResponse(iterfile(), media_type="application/octet-stream")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host='0.0.0.0', port=8000)

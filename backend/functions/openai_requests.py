@@ -1,8 +1,14 @@
+import os
 import openai
-from decouple import config
+#from decouple import config
+from dotenv import load_dotenv
+from pathlib import Path
 
-openai.organization = config("OPEN_AI_ORG")
-openai.api_key = config("OPEN_AI_KEY")
+dotenv_path = Path('../.env')
+load_dotenv(dotenv_path=dotenv_path)
+
+openai.organization = os.getenv("OPEN_AI_ORG")
+openai.api_key = os.getenv("OPEN_AI_KEY")
 
 from functions.database import get_recent_messages
 
